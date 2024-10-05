@@ -1,0 +1,99 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 800,
+  "height": 400,
+  "title": "Count of Suburbs by Fluoridation Level",
+  "data": {
+    "url": "https://raw.githubusercontent.com/eddent2009/Edden_FIT3179_HW10/refs/heads/main/data/Fluoridation%20by%20postcode%20-%20Sheet1.csv",
+    "format": {"type": "csv"}
+  },
+  "params": [
+    {
+      "name": "Fluoride_Level_Selection",
+      "bind": {
+        "input": "select",
+        "options": [
+          null,
+          "Fluoridated",
+          "Not Fluoridated",
+          "Partly Fluoridated",
+          "Natural Fluoride"
+        ],
+        "name": "Filter by Fluoride Level: "
+      }
+    }
+  ],
+  "transform": [
+    {
+      "filter": "Fluoride_Level_Selection == null || lower(trim(datum.fluoride_level)) == lower(trim(Fluoride_Level_Selection))"
+    },
+    {"filter": "datum.townsuburb != null"}
+  ],
+  "encoding": {
+    "x": {
+      "field": "fluoride_level",
+      "type": "nominal",
+      "axis": {"title": "Fluoridation Level"}
+    },
+    "y": {
+      "aggregate": "count",
+      "field": "townsuburb",
+      "type": "quantitative",
+      "axis": {"title": "Number of Suburbs"}
+    },
+    "color": {
+      "field": "fluoride_level",
+      "type": "nominal",
+      "scale": {
+        "domain": [
+          "Fluoridated",
+          "Natural fluoride",
+          "Not fluoridated",
+          "Partly fluoridated"
+        ],
+        "range": ["#377eb8", "#008000", "#FF0000", "#ff7f00"]
+      },
+      "legend": {"title": "Fluoridation Level"}
+    },
+    "tooltip": [
+      {
+        "field": "fluoride_level",
+        "type": "nominal",
+        "title": "Fluoridation Level"
+      },
+      {
+        "field": "townsuburb",
+        "type": "nominal",
+        "aggregate": "count",
+        "title": "Number of Suburbs"
+      }
+    ]
+  },
+  "layer": [
+    {"mark": {"type": "bar"}, "encoding": {"opacity": {"value": 0.8}}},
+    {
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "middle",
+        "dy": -10,
+        "fontSize": 12,
+        "fontStyle": "italic"
+      },
+      "encoding": {
+        "text": {
+          "aggregate": "count",
+          "field": "townsuburb",
+          "type": "quantitative"
+        },
+        "y": {
+          "aggregate": "count",
+          "field": "townsuburb",
+          "type": "quantitative"
+        },
+        "color": {"value": "black"}
+      }
+    }
+  ],
+  "config": {}
+}
