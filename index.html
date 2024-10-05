@@ -11,12 +11,21 @@
 </head>
 <body>
   
-  
-  <!-- The div where your point map will be embedded -->
+  <!-- The div where your bar chart will be embedded (First) -->
+  <div id="barchart"></div>
+
+  <!-- The div where your point map will be embedded (Second) -->
   <div id="pointmap"></div>
 
   <script type="text/javascript">
-    var spec2 = "js/pointmap_fluoridation.vl.json";  // Link to your JSON spec for the map
+    // Embed the bar chart first
+    var spec3 = "js/wk10hw_visualization.vl.json";
+    vegaEmbed('#barchart', spec3).then(function(result) {
+      // Access the Vega view instance as result.view
+    }).catch(console.error);
+
+    // Embed the point map second
+    var spec2 = "js/pointmap_fluoridation.vl.json";
     vegaEmbed('#pointmap', spec2).then(function(result) {
       // Access the Vega view instance as result.view
     }).catch(console.error);
