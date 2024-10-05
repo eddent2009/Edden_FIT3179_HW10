@@ -10,21 +10,27 @@
   <link rel="stylesheet" type="text/css" href="css/styles.css" media="all">
 </head>
 <body>
+
+  <!-- Main Header for the Homework -->
+  <h1>Week 10 Homework</h1>
   
-  <!-- The div where your bar chart will be embedded (First) -->
+  <h2>Bar Chart: Count of Suburbs by Fluoridation Level</h2>
+  
   <div id="barchart"></div>
 
-  <!-- The div where your point map will be embedded (Second) -->
+  
+  <h2>Map Visualization: Fluoridation Levels by Suburb in Victoria</h2>
+  
   <div id="pointmap"></div>
 
   <script type="text/javascript">
-    // Embed the bar chart first
+    
     var spec3 = "js/wk10hw_visualization.vl.json";
     vegaEmbed('#barchart', spec3).then(function(result) {
-      // Access the Vega view instance as result.view
+    // Access the Vega view instance as result.view
     }).catch(console.error);
 
-    // Embed the point map second
+    
     var spec2 = "js/pointmap_fluoridation.vl.json";
     vegaEmbed('#pointmap', spec2).then(function(result) {
       // Access the Vega view instance as result.view
