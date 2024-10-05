@@ -10,19 +10,16 @@
   <link rel="stylesheet" type="text/css" href="css/styles.css" media="all">
 </head>
 <body>
-
-
-   <div id="pointmap"></div>
+    
+  
+  <!-- The div where your point map will be embedded -->
+  <div id="pointmap"></div>
 
   <script type="text/javascript">
     var spec2 = "js/wk10hw_visualization.vl.json";  // Link to your JSON spec for the map
     vegaEmbed('#pointmap', spec2).then(function(result) {
       // Access the Vega view instance as result.view
     }).catch(console.error);
-  
-  
-  <!-- The div where your point map will be embedded -->
-  <div id="pointmap"></div>
 
   <script type="text/javascript">
     var spec2 = "js/pointmap_fluoridation.vl.json";  // Link to your JSON spec for the map
