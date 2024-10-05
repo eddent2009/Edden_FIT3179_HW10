@@ -14,6 +14,7 @@
   <!-- Main Header for the Homework -->
   <h1>Week 10 Homework</h1>
   
+  
   <h2>Bar Chart: Count of Suburbs by Fluoridation Level</h2>
   
   <div id="barchart"></div>
@@ -24,13 +25,12 @@
   <div id="pointmap"></div>
 
   <script type="text/javascript">
-    
     var spec3 = "js/wk10hw_visualization.vl.json";
     vegaEmbed('#barchart', spec3).then(function(result) {
-    // Access the Vega view instance as result.view
+      // Access the Vega view instance as result.view
     }).catch(console.error);
 
-    
+   
     var spec2 = "js/pointmap_fluoridation.vl.json";
     vegaEmbed('#pointmap', spec2).then(function(result) {
       // Access the Vega view instance as result.view
